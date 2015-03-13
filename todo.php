@@ -1,7 +1,7 @@
 <?php
  
 // Create array to hold list of todo items
-$items = array();
+$items = array('review array functions', 'add sorting functionality');
  
 // The loop!
 do {
@@ -12,7 +12,7 @@ do {
     }
  
     // Show the menu options
-    echo '(N)ew item, (R)emove item, (Q)uit : ';
+    echo '(N)ew item, (S)ort, (R)emove item, (Q)uit : ';
  
     // Get the input from user
     // Use trim() to remove whitespace and newlines
@@ -31,7 +31,13 @@ do {
         $key = trim(fgets(STDIN));
         // Remove from array
         unset($items[$key]);
-    }
+        // Sort array by:"(A)"
+    } elseif ($input == 'S') {
+    // Ask for user input on how they would like to sort
+        // echo "(A)-Z, (Z)-A, (O)rder entered, (R)everse order entere: ";
+        // $menuChoice = trim(fgets(STDIN));
+        $items = sort_menu($items);
+        }
 // Exit when input is (Q)uit
 } while ($input != 'Q');
  
@@ -40,3 +46,23 @@ echo "Goodbye!\n";
  
 // Exit with 0 errors
 exit(0);
+
+function sort_menu($a) {
+    echo "(A)-Z, (Z)-A, (O)rder entered, (R)everse order entered: ";
+    $menuChoice = trim(fgets(STDIN));
+
+    if ($menuChoice == 'A') {
+        asort($a);
+        return ($a);
+    } elseif ($menuChoice == 'Z') {
+        arsort($a);
+        return ($a);
+    } elseif ($menuChoice == 'O') {
+        ksort($a);
+        return ($a);
+    } elseif ($menuChoice == 'R') {
+        krsort($a);
+        return ($a);
+    }
+}
+
