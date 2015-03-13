@@ -1,7 +1,7 @@
 <?php
  
 // Create array to hold list of todo items
-$items = array('review array functions', 'add sorting functionality');
+$items = array();
  
 // The loop!
 do {
@@ -22,8 +22,21 @@ do {
     if ($input == 'N') {
         // Ask for entry
         echo 'Enter item: ';
+        $input = trim(fgets(STDIN));
+
+        echo 'Do you want this item to the be (F)irst or (L)ast on the list? ';
+       $response = trim(fgets(STDIN));
+   
+        if ($response == 'F') {
+            array_unshift($items, $input);
+        }elseif($response == 'L') {
+           array_push($items, $input);
+
+        }
+        // echo 'Enter item: ';
+        // Ask user if they want to add to beginning or end of list
         // Add entry to list array
-        $items[] = trim(fgets(STDIN));
+        // $items[] = trim(fgets(STDIN));
     } elseif ($input == 'R') {
         // Remove which item?
         echo 'Enter item number to remove: ';
@@ -65,3 +78,16 @@ function sort_menu($a) {
     }
 }
 
+// function list_position($a){
+//        $positionChoice = trim(fgets(STDIN));
+
+//     $listPosition = $items[] = trim(fgets(STDIN));
+//         if ($positionChoice == 'F') {
+//             echo 'Enter item: ';
+//             array_unshift($items, $listPosition);
+//         }elseif ($positionChoice == 'L') {
+//             echo 'Enter item: ';
+//             array_push($items, $listPosition);
+            
+//         }
+// }
