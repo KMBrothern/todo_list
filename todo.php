@@ -34,8 +34,7 @@ do {
         // Sort array by:"(A)"
     } elseif ($input == 'S') {
     // Ask for user input on how they would like to sort
-        // echo "(A)-Z, (Z)-A, (O)rder entered, (R)everse order entere: ";
-        // $menuChoice = trim(fgets(STDIN));
+        // echo "(A)-Z, (Z)-A, (O)rder entered, (R)everse order entered: ";
         $items = sort_menu($items);
         }
 // Exit when input is (Q)uit
@@ -48,7 +47,7 @@ echo "Goodbye!\n";
 exit(0);
 
 function sort_menu($a) {
-    echo "(A)-Z, (Z)-A, (O)rder entered, (R)everse order entered: ";
+    echo "Choose a sorting option: (A)-Z, (Z)-A, (O)rder entered, (R)everse order entered: ";
     $menuChoice = trim(fgets(STDIN));
 
     if ($menuChoice == 'A') {
